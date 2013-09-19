@@ -24,7 +24,7 @@ GetOptions(
 
 # add other options to check for here
 if( defined $help ) {
-    display_help();
+    HELP_MESSAGE();
     if( defined( $help ) ) {
         exit 0;
     }
@@ -36,7 +36,7 @@ if( defined $help ) {
 
 exit 0;
 
-sub display_help {
+sub HELP_MESSAGE {
     my $helptext;
     my $name_length = length $script_name;
 

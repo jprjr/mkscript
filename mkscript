@@ -15,6 +15,8 @@ use Getopt::Std;
 
 use Data::Dumper;
 
+$Getopt::Std::STANDARD_HELP_VERSION = 1;
+
 my ( $script_name, $script_folder ) = fileparse( abs_path($PROGRAM_NAME) );
 my $current_folder = getcwd();
 
@@ -41,7 +43,7 @@ if( exists $opts->{'h'} or
     not defined $ARGV[0] or
     ($t_required == 1 and not defined $opts->{'t'})
   ) {
-    display_help();
+    HELP_MESSAGE();
     if( exists $opts->{'h'} ) {
         exit 0;
     }
@@ -74,7 +76,7 @@ else {
 
 exit 0;
 
-sub display_help {
+sub HELP_MESSAGE {
     my $helptext;
     my $name_length = length $script_name;
 
