@@ -11,39 +11,50 @@ use English qw(-no_match_vars);
 use File::Basename;
 use File::Spec;
 use Getopt::Long;
+use Pod::Usage;
 
 my ( $script_name, $script_folder ) = fileparse( abs_path($PROGRAM_NAME) );
 my $current_folder = getcwd();
 
-my ( $help );
+my ( $help, $man );
 
 GetOptions(
-    'help'        => \$help,
-    'h'           => \$help,
-);
+    'help!'        => \$help,
+    'man!'         => \$man,
+) or pod2usage( -verbose => 1, -exit => 1 );
 
 # add other options to check for here
 if( defined $help ) {
-    HELP_MESSAGE();
-    if( defined( $help ) ) {
-        exit 0;
-    }
-    exit 1;
+    pod2usage( -verbose => 1, -exit => 0 );
+}
+if( defined $man ) {
+    pod2usage( -verbose => 2, -exit => 0 );
 }
 
 # Main script body here
 
 
 exit 0;
+__END__
+=head1 NAME
 
-sub HELP_MESSAGE {
-    my $helptext;
-    my $name_length = length $script_name;
+ pl
 
-    $helptext = "Usage:\n";
-    $helptext .= q{  }.$script_name."\n";
+=head1 DESCRIPTION
 
-    print {*STDERR} $helptext;
-    return;
-}
+ This is some placeholder text for my actual description.
+
+=head1 USAGE
+
+ pl Arguments options etc
+
+=head1 ARGUMENTS
+
+ --help  Print this help text
+
+=head1 OPTIONS
+
+ This is some placeholder text for options
+
+=cut
 # vim:fdm=marker:syntax=perl:cc=80
