@@ -1,22 +1,20 @@
 #!/usr/bin/env bash
 
-mydir=$(dirname $(readlink -f $0))
+realpath_portable() {
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+
+mydir=$(dirname $(realpath_portable "$0"))
 bindir=$HOME/bin
 
 if [[ ! -d "$bindir" ]]; then
     mkdir "$bindir"
 fi
 
-if [[ ! -e "$bindir/mkscript" ]]
-then
-    ln -v -s "$mydir/mkscript" "$bindir/mkscript"
-fi
+ln -i -v -s "$mydir/mkscript" "$bindir/mkscript"
 
 for file in $mydir/templates/*; do
     echo "$file"
     type=$(basename $file)
-    if [[ ! -e "$bindir/mkscript.$type" ]]
-    then
-        ln -v -s "$mydir/mkscript" "$bindir/mkscript.$type"
-    fi
+    ln -i -v -s "$mydir/mkscript" "$bindir/mkscript.$type"
 done
