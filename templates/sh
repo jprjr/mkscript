@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+cwd=$(pwd)
+
+abspath_portable() {
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+abs_path=$(abspath_portable "$0")
+dir_name=$(dirname "${abs_path}")
+script_name="${abs_path#$dir_name/}"
+
+script_dir=$(cd "${dir_name}" && pwd -P)
+script_abs_name=$(readlink "${abs_path}" || echo "${script_name}")
+
+# $script_dir is the absolute path to the script's directory, and all
+#             symlinks are resolved
+# $script_name is the name of the script only, as called by the user
+# $script_abs_name is the name of the script only, all symlinks resolved
+
