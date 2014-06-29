@@ -1,0 +1,32 @@
+\documentclass[10pt,titlepage,letterpaper]{article}
+
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault}
+
+\usepackage{hyperref}
+\hypersetup{bookmarks=true,
+  pdftitle="",
+  pdfauthor="",
+  pdfstartview=FitH,
+  colorlinks=true,
+  urlcolor=black,
+  linkcolor=black}
+
+\usepackage{parskip}
+
+\title{}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% cheat-sheet notes
+% \section{title} - begin section
+% \subsection{title} - begin subsection
+% \begin{itemize} - item list
+% \item text - Items
+
+\end{document}
